@@ -4,4 +4,8 @@ hominlinx's Vim config
 ==================
 A vimer 
 It's my config of vim.
->>>>>>> bdfe6cd6a805b06fbebeabf89a480359df2a353b
+>>>>>>>>>>>>>>>>>>>>
+mkdir ~/.vim
+mkdir ~/.vim/bundle # Used to store plug in
+mkdir ~/.vim/vimrc 
+
