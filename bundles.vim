@@ -14,9 +14,9 @@ filetype plugin indent on     " required!
 "------------------
 "color Schemes
 " -----------------
-Bundle 'tpope/vim-vividchalk'
 
 "------------------
 " Code Completions
 " -----------------
 Bundle 'Shougo/neocomplcache'
+Bundle 'SirVer/ultisnips'
