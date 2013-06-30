@@ -1,9 +1,11 @@
 source ~/.vim/bundles.vim
 
-" encoding dectection
+" encoding dectection 
+" --->reference from internet(http://edyfox.codecarver.org/html/vim_fileencodings_detection.html) 
 set fileencodings=utf-8,gb2312,gb18030,gbk,ucs-bom,cp936,latin1
 
-" enable filetype dectection and ft specific plugin/indent
+" enable filetype dectection and ft(filetype) specific plugin/indent
+" 文件类型检测/允许加载文件类型插件/为不同类型的文件定义不同的缩进格式
 filetype plugin indent on
 
 " enable syntax hightlight and completion
@@ -14,14 +16,15 @@ syntax on
 "--------
 " color scheme
 set background=dark
-color vividchalk
+colorscheme vividchalk
 
-" highlight current line
+" highlight current line and column
 au WinLeave * set nocursorline nocursorcolumn
 au WinEnter * set cursorline cursorcolumn
 set cursorline cursorcolumn
 
 " search
+" 智能大小写
 set incsearch
 "set highlight 	" conflict with highlight current line
 set ignorecase

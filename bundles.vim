@@ -12,6 +12,11 @@ filetype plugin indent on     " required!
 " My Bundles Here(hominlinx):
 "
 "------------------
+"color Schemes
+" -----------------
+Bundle 'tpope/vim-vividchalk'
+
+"------------------
 " Code Completions
 " -----------------
 Bundle 'Shougo/neocomplcache'
