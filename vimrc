@@ -72,6 +72,7 @@ set laststatus=2
 "==========================================
 " others 其它配置
 "==========================================
+
 autocmd! bufwritepost _vimrc source % " vimrc文件修改之后自动加载。 windows。
 autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
 
@@ -98,6 +99,79 @@ set matchpairs+=<:>                                               " specially fo
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
 
 
+"=============================================
+"hot key 自定义快捷键
+"=============================================
+"<Leader>的定义
+let mapleader = ','
+let g:mapleader = ','
+
+"Quickly edit/reload the vimrc file
+"<silent>表示执行键绑定时不在命令行上回显
+nmap <silent> <leader>ev :e $MYVIMRC<CR>
+nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+"better command line editing
+"在命令行模式下使用了类似emace的快捷键
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+"后退一个字符
+cnoremap <C-B>        <Left>
+" 删除光标所在的字符
+cnoremap <C-D>        <Del>
+ " 前进一个字符
+cnoremap <C-F>        <Right>
+" 取回较新的命令行
+cnoremap <C-N>        <Down>
+" 取回以前 (较旧的) 命令行
+cnoremap <C-P>        <Up>
+" 后退一个单词
+"使用shell的即可
+" 前进一个单词
+" 使用shell的即可
+
+"smart way to move between windows 多窗口移动
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" go to beign and end using capitalized derections
+noremap H 0
+noremap L $
+map 0 ^
+
+" speed up scrolling of the viewport slightly
+nnoremap <C-e> 2<C-e>
+nnoremap <C-y> 2<C-y>
+
+"为了方便复制，用《F2》开启或关闭行号显示：
+nnoremap <F2> :set nonumber! number?<CR>
+
+"用F3 开启或关闭list功能，是否显示不可见字符
+set listchars=tab:>-,eol:$
+nnoremap <F3> :set list! list?<CR>
+
+"用F4 开启或关闭换行功能
+nnoremap <F4> :set wrap! wrap?<CR>
+
+"set paste
+"用F5激活/取消 paste模式，进入插入模式粘贴，代码就不会被自动缩进
+set pastetoggle=<F5>
+" disbale paste mode when leaving insert mode
+au InsertLeave * set nopaste
+
+"F6 激活/取消语法高亮
+nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+
+"kj   <Esc>，不用到角落去按esc了
+inoremap kj <Esc>
+
+""Jump to start and end of line using the home row keys
+nmap t o<ESC>k
+nmap T O<ESC>j
+
+
 "==========================================
 " Plugin settings
 " vundle 管理
@@ -117,28 +191,12 @@ let g:molokai_original = 1
 let g:rehash256 = 1
 
 
-" NeoComplCache
-" 自动补全
-let g:neocomplcache_enable_at_startup=1
-let g:neoComplcache_disableautocomplete=1
-"let g:neocomplcache_enable_underbar_completion = 1
-"let g:neocomplcache_enable_camel_case_completion = 1
-let g:neocomplcache_enable_smart_case=1
-let g:neocomplcache_min_syntax_length = 3
-let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
-set completeopt-=preview
 "UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 
-"==========================================
-"hot key 自定义快捷键
-"==========================================
-
-
-"========================== config for plugins end ======================================
 
 "==========================================
 " 主题,及一些展示上颜色的修改
