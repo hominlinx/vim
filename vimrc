@@ -89,8 +89,9 @@ set showcmd                                                       " show typed c
 set title                                                         " show file in titlebar
 set laststatus=2                                                  " use 2 lines for the status bar
 set matchtime=2                                                   " show matching bracket for 0.2 seconds
-set matchpairs+=<:>                                               " specially for html
+"set matchpairs+=<:>                                               " specially for html
 " set relativenumber
+
 
 " Python 文件的一般设置，比如不要 tab 等
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
@@ -213,9 +214,10 @@ endif
 
 "相对行号和绝对行号，相对行号可以快速移动
 "行号变成相对，可以用 nj nk 进行跳转 5j 5k 上下跳5行
-set relativenumber
-au FocusLost * :set number
-au FocusGained * :set relativenumber
+"set relativenumber
+"au FocusLost * :set number
+"au FocusGained * :set relativenumber
+
 " 插入模式下用绝对行号, 普通模式下用相对
 autocmd InsertEnter * :set number
 autocmd InsertLeave * :set relativenumber
@@ -241,6 +243,20 @@ filetype off
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
+
+
+
+"主题：molokai
+Bundle 'tomasr/molokai'
+let g:molokai_original = 1
+let g:rehash256 = 1
+
+"主题 solarized
+Bundle 'altercation/vim-colors-solarized'
+"let g:solarized_termcolors=256
+let g:solarized_termtrans=1
+let g:solarized_contrast="normal"
+let g:solarized_visibility="normal"
 
 "目录导航
 Bundle 'vim-scripts/The-NERD-tree'
@@ -298,12 +314,10 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
-
 "自动补全单引号，双引号等 Bundle 'underlog/ClosePairs'
 Bundle 'Raimondi/delimitMate' 
-
 "快速 加减注释
-Bundle 'scrooloose/nerdcommenter'
+eundle 'scrooloose/nerdcommenter'
 
 "快速插入代码片段
 Bundle 'vim-scripts/UltiSnips'
@@ -320,25 +334,13 @@ Bundle 'tpope/vim-repeat'
 "迄今位置用到的最好的自动VIM自动补全插件
 Bundle 'Valloric/YouCompleteMe'
 "youcompleteme 默认tab s-tab 和自动补全冲突
-"let g:ycm_key_list_select_completion=['<c-n>']
+let g:ycm_key_list_select_completion=['<c-n>']
 let g:ycm_key_list_select_completion = ['<Down>']
-"let g:ycm_key_list_previous_completion=['<c-p>']
+let g:ycm_key_list_previous_completion=['<c-p>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 
 
 
-
-"主题：molokai
-Bundle 'tomasr/molokai'
-let g:molokai_original = 1
-let g:rehash256 = 1
-
-"主题 solarized
-Bundle 'altercation/vim-colors-solarized'
-"let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_contrast="normal"
-let g:solarized_visibility="normal"
 
 
 "UltiSnips
