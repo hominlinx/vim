@@ -317,7 +317,7 @@ let g:ctrlp_follow_symlinks=1
 "自动补全单引号，双引号等 Bundle 'underlog/ClosePairs'
 Bundle 'Raimondi/delimitMate' 
 "快速 加减注释
-eundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdcommenter'
 
 "快速插入代码片段
 Bundle 'vim-scripts/UltiSnips'
