@@ -1,11 +1,6 @@
-hominlinx's Vim config
-<<<<<<< HEAD
-=======
-==================
-A vimer 
+#hominlinx's Vim config#
+**A vimer** 
 It's my config of vim.
->>>>>>>>>>>>>>>>>>>>
-mkdir ~/.vim
-mkdir ~/.vim/bundle # Used to store plug in
-mkdir ~/.vim/vimrc 
+
+
 

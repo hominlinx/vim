@@ -381,6 +381,10 @@ let g:rbpt_colorpairs = [
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
 
+"vim-markdown
+Bundle 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disable=1
+
 "==========================================
 "
 " 主题,及一些展示上颜色的修改
