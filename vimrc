@@ -219,17 +219,17 @@ endif
 "au FocusGained * :set relativenumber
 
 " 插入模式下用绝对行号, 普通模式下用相对
-autocmd InsertEnter * :set number
-autocmd InsertLeave * :set relativenumber
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set number
-  else
-    set relativenumber
-  endif
-endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
-
+"autocmd InsertEnter * :set number
+"autocmd InsertLeave * :set relativenumber
+"function! NumberToggle()
+"  if(&relativenumber == 1)
+"    set number
+"  else
+"    set relativenumber
+"  endif
+"endfunc
+"nnoremap <C-n> :call NumberToggle()<cr>
+"
 " remap U to <C-r> for easier redo
 nnoremap U <C-r>
 
@@ -383,7 +383,8 @@ let g:rbpt_loadcmd_toggle = 0
 
 "vim-markdown
 Bundle 'plasticboy/vim-markdown'
-let g:vim_markdown_folding_disable=1
+au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
+let g:vim_markdown_folding_disable = 0
 
 "==========================================
 "
@@ -402,7 +403,7 @@ set t_Co=256
 "set t_Co=256
 
 " settings for kien/rainbow_parentheses.vim
-au VimEnter * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+"au VimEnter * RainbowParenthesesToggle
+"au Syntax * RainbowParenthesesLoadRound
+"au Syntax * RainbowParenthesesLoadSquare
+"au Syntax * RainbowParenthesesLoadBraces
