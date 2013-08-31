@@ -384,7 +384,40 @@ let g:rbpt_loadcmd_toggle = 0
 "vim-markdown
 Bundle 'plasticboy/vim-markdown'
 au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
-let g:vim_markdown_folding_disable = 0
+let g:vim_markdown_folding_disable = 1
+
+"转换Markdown为HTML
+nnoremap <leader>f :silent! !firefox %<CR>
+nnoremap <C-m>		!!markdown<CR>
+vnoremap <C-m>		!markdown<CR>
+nnoremap <C-p>		!!pandoc<CR>
+vnoremap <C-p>		!pandoc<CR>
+
+" 自动化命令
+au FileType markdown let &l:mp='pandoc % \| tidy -q -i -utf8 --doctype omit --tidy-mark 0 --show-errors 0 -o %:r.html'
+au FileType markdown nnoremap <buffer> <F5> :write \| silent make \| redraw!<CR>
+au BufWrite *.{md,mdown,mkd,mkdn,markdown,mdwn} exe "normal \<F5>"
+
+" 提取文章标题
+com! -bar TOC call TOC()
+fun! TOC()
+    call setloclist(0, [])
+    let save_cursor = getpos(".")
+    call cursor(1, 1)
+    let flag = 'cW'
+    while search("^#", flag) > 0
+        let flag = 'W'
+        let msg = printf('%s:%d:%s', expand('%'), line('.'), substitute(getline('.'), '#', '»', 'g'))
+        laddexpr msg
+    endwhile
+    call setpos('.', save_cursor)
+    silent! call ToggleLocationList()
+endfun
+
+" 配置插件
+let g:alternateExtensions_html = 'markdown'
+let g:alternateExtensions_markdown = 'html'
+
 
 "==========================================
 "
