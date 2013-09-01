@@ -338,7 +338,7 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
 let g:ycm_min_num_of_chars_for_completion=1
 let g:ycm_autoclose_preview_window_after_insertion=1
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>s
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 "快速插入代码片段
 "Bundle 'vim-scripts/UltiSnips'
@@ -461,6 +461,10 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 imap { {}<ESC>i<CR><ESC>O  
+
+"##########其他##########"
+"cpp 与h之间转换
+Bundle 'derekwyatt/vim-fswitch'
 
 "==========================================
 "
