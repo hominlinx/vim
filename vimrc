@@ -258,6 +258,8 @@ let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
 
+"##########导航##########"
+
 "目录导航
 Bundle 'vim-scripts/The-NERD-tree'
 map <leader>n :NERDTreeToggle<CR>
@@ -298,15 +300,15 @@ let Tlist_Use_Horiz_Window = 0
 let Tlist_Use_Right_Window = 0
 let Tlist_WinWidth = 25
 
-"更高效的移动
-Bundle 'Lokaltog/vim-easymotion'
-
 "文件搜索
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
 "set wildignore+=*/tmp/*,*.so,*.swp,*.zip " MacOSX/Linux"
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn$\|.rvm$'
+let g:ctrlp_custom_ignore = {
+    \ 'dir': '\v[\/]\.(git|hg|svn|rvm)$',
+    \ 'file': '\v\.(exe|so|dll|zip|tar|tar.gz)$',
+    \ }
 let g:ctrlp_working_path_mode=0
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_max_height=15
@@ -314,22 +316,13 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
-"自动补全单引号，双引号等 Bundle 'underlog/ClosePairs'
-Bundle 'Raimondi/delimitMate' 
-"快速 加减注释
-Bundle 'scrooloose/nerdcommenter'
+"##########移动##########"
+"更高效的移动
+Bundle 'Lokaltog/vim-easymotion'
+Bundle 'vim-scripts/matchit.zip'
 
-"快速插入代码片段
-Bundle 'vim-scripts/UltiSnips'
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<tab>"
-"定义存放代码片段的文件夹 .vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
-let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
 
-" 快速加入修改环绕字符
-Bundle 'tpope/vim-surround'
-"for repeat -> enhance surround.vim, . to repeat command
-Bundle 'tpope/vim-repeat'
+"##########补全/自动编辑##########"
 
 "迄今位置用到的最好的自动VIM自动补全插件
 Bundle 'Valloric/YouCompleteMe'
@@ -342,15 +335,49 @@ let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_
 let g:ycm_min_num_of_chars_for_completion=1
 let g:ycm_autoclose_preview_window_after_insertion=1
 
+"快速插入代码片段
+"Bundle 'vim-scripts/UltiSnips'
+Bundle 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<tab>"
+"定义存放代码片段的文件夹 .vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
+let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
 
+"快速 加减注释
+Bundle 'scrooloose/nerdcommenter'
 
-"UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" 快速加入修改环绕字符
+Bundle 'tpope/vim-surround'
+"for repeat -> enhance surround.vim, . to repeat command
+Bundle 'tpope/vim-repeat'
 
+"自动补全单引号，双引号等
+Bundle 'Raimondi/delimitMate'
+" for python docstring ",优化输入
+au FileType python let b:delimitMate_nesting_quotes = ['"']
 
-"显示增强型：
+"for code alignment
+Bundle 'godlygeek/tabular'
+nmap <Leader>a= :Tabularize /=<CR>
+vmap <Leader>a= :Tabularize /=<CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+
+"for visual selection
+Bundle 'terryma/vim-expand-region'
+map = <Plug>(expand_region_expand)
+map - <Plug>(expand_region_shrink)
+
+"for mutil cursor
+Bundle 'terryma/vim-multiple-cursors'
+" Default mapping
+let g:multi_cursor_next_key='<C-m>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
+
+"##########显示增强##########"
+
 "状态栏增强展示
 Bundle 'Lokaltog/vim-powerline'
 "if want to use fancy,need to add font patch -> git clone
@@ -380,43 +407,48 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
+"代码排版缩进标识
+Bundle 'Yggdroot/indentLine'
+let g:indentLine_noConcealCursor = 1
+let g:indentLine_color_term = 0
+let g:indentLine_char = '¦'
 
-"vim-markdown
+"for show no user whitespaces
+Bundle 'bronson/vim-trailing-whitespace'
+map <leader><space> :FixWhitespace<cr>
+
+"##########语法检查##########"
+" 编辑时自动语法检查标红, vim-flake8目前还不支持,所以多装一个
+" 使用pyflakes,速度比pylint快
+Bundle 'scrooloose/syntastic'
+let g:syntastic_error_symbol='>>'
+let g:syntastic_warning_symbol='>'
+let g:syntastic_check_on_open=1
+let g:syntastic_enable_highlighting = 0
+"let g:syntastic_python_checker="flake8,pyflakes,pep8,pylint"
+let g:syntastic_python_checkers=['pyflakes']
+highlight SyntasticErrorSign guifg=white guibg=black
+
+" python fly check, 弥补syntastic只能打开和保存才检查语法的不足
+Bundle 'kevinw/pyflakes-vim'
+let g:pyflakes_use_quickfix = 0
+
+"##########语法高亮##########"
+" for python.vim syntax highlight
+Bundle 'hdima/python-syntax'
+let python_highlight_all = 1
+
+" for golang
+Bundle 'jnwhiteh/vim-golang'
+
+" for markdown
 Bundle 'plasticboy/vim-markdown'
-au BufRead,BufNewFile *.{md,mdown,mkd,mkdn,markdown,mdwn} set filetype=mkd
-let g:vim_markdown_folding_disable = 1
+let g:vim_markdown_folding_disabled=1
 
-"转换Markdown为HTML
-nnoremap <leader>f :silent! !firefox %<CR>
-nnoremap <C-m>		!!markdown<CR>
-vnoremap <C-m>		!markdown<CR>
-nnoremap <C-p>		!!pandoc<CR>
-vnoremap <C-p>		!pandoc<CR>
+"for cpp
+Bundle 'octol/vim-cpp-enhanced-highlight'
 
-" 自动化命令
-au FileType markdown let &l:mp='pandoc % \| tidy -q -i -utf8 --doctype omit --tidy-mark 0 --show-errors 0 -o %:r.html'
-au FileType markdown nnoremap <buffer> <F5> :write \| silent make \| redraw!<CR>
-au BufWrite *.{md,mdown,mkd,mkdn,markdown,mdwn} exe "normal \<F5>"
 
-" 提取文章标题
-com! -bar TOC call TOC()
-fun! TOC()
-    call setloclist(0, [])
-    let save_cursor = getpos(".")
-    call cursor(1, 1)
-    let flag = 'cW'
-    while search("^#", flag) > 0
-        let flag = 'W'
-        let msg = printf('%s:%d:%s', expand('%'), line('.'), substitute(getline('.'), '#', '»', 'g'))
-        laddexpr msg
-    endwhile
-    call setpos('.', save_cursor)
-    silent! call ToggleLocationList()
-endfun
-
-" 配置插件
-let g:alternateExtensions_html = 'markdown'
-let g:alternateExtensions_markdown = 'html'
 
 
 "==========================================
