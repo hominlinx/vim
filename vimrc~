@@ -318,7 +318,11 @@ let g:ctrlp_follow_symlinks=1
 
 "##########移动##########"
 "更高效的移动
+",, + w  跳转
+",, + fe  查找'e',快速跳转定位到某个字符位置
 Bundle 'Lokaltog/vim-easymotion'
+
+"% 匹配成对的标签，跳转
 Bundle 'vim-scripts/matchit.zip'
 
 
@@ -334,6 +338,7 @@ let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
 let g:ycm_min_num_of_chars_for_completion=1
 let g:ycm_autoclose_preview_window_after_insertion=1
+nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>s
 
 "快速插入代码片段
 "Bundle 'vim-scripts/UltiSnips'
@@ -344,7 +349,8 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
 
 "快速 加减注释
-Bundle 'scrooloose/nerdcommenter'
+"shift+v+方向键选中(默认当前行)   ->  ,cc  加上注释  -> ,cu 解开注释
+Bundle 'scrooloose/nerdcommenter' 
 
 " 快速加入修改环绕字符
 Bundle 'tpope/vim-surround'
@@ -449,7 +455,12 @@ let g:vim_markdown_folding_disabled=1
 Bundle 'octol/vim-cpp-enhanced-highlight'
 
 
-
+"设置花括号补全
+"set smartindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+imap { {}<ESC>i<CR><ESC>O  
 
 "==========================================
 "
