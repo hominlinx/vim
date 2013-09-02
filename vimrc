@@ -32,7 +32,7 @@ set cursorcolumn
 set cursorline " 突出显示当前行
 
 "- 则点击光标不会换,用于复制
-set mouse-=a
+set mouse =a
 set selection=exclusive
 set selectmode=mouse,key
 
@@ -358,9 +358,10 @@ Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-repeat'
 
 "自动补全单引号，双引号等
-Bundle 'Raimondi/delimitMate'
+"Bundle 'Raimondi/delimitMate'
 " for python docstring ",优化输入
-au FileType python let b:delimitMate_nesting_quotes = ['"']
+"au FileType python let b:delimitMate_nesting_quotes = ['"']
+Bundle 'jiangmiao/auto-pairs'
 
 "for code alignment
 Bundle 'godlygeek/tabular'
@@ -456,11 +457,12 @@ Bundle 'octol/vim-cpp-enhanced-highlight'
 
 
 "设置花括号补全
-"set smartindent
+set smartindent
+set autoindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
-imap { {}<ESC>i<CR><ESC>O  
+"imap { {}<ESC>i<CR><ESC>O  
 
 "##########其他##########"
 "cpp 与h之间转换
