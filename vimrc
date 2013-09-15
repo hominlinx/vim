@@ -316,6 +316,10 @@ let g:ctrlp_match_window_reversed=0
 let g:ctrlp_mruf_max=500
 let g:ctrlp_follow_symlinks=1
 
+Bundle 'mileszs/ack.vim'
+ Bundle 'rking/ag.vim'
+"let g:agprg="<custom-ag-path-goes-here> --column"
+
 "##########移动##########"
 "更高效的移动
 ",, + w  跳转
