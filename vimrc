@@ -387,6 +387,22 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 
+"for golang
+Bundle 'nsf/gocode',{'rtp':'vim/'}
+set rtp+=$GOROOT/misc/vim
+
+"for Ruby
+Bundle 'tpope/vim-endwise'
+
+"web front end
+Bundle 'othree/html5.vim'
+Bundle 'tpope/vim-haml'
+Bundle 'nono/jquery.vim'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'groenewege/vim-less'
+Bundle 'wavded/vim-stylus'
+
 "##########显示增强##########"
 
 "状态栏增强展示
@@ -488,8 +504,17 @@ set t_Co=256
 "set background=dark
 "set t_Co=256
 
-" settings for kien/rainbow_parentheses.vim
-"au VimEnter * RainbowParenthesesToggle
-"au Syntax * RainbowParenthesesLoadRound
-"au Syntax * RainbowParenthesesLoadSquare
-"au Syntax * RainbowParenthesesLoadBraces
+"=========================================
+"
+"=========================================
+
+" 定义自动命令，如果每次vim打开时没有指定打开文件，则启用NERDTree
+ autocmd vimenter * if !argc() | NERDTree | endif
+ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" 针对 Ruby 文件
+ autocmd FileType ruby,rdoc set tabstop=2 shiftwidth=2
+"  
+" 针对 Go 文件
+  autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
+  autocmd FileType go autocmd BufWritePre <buffer> Fmt"
