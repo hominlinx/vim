@@ -1,6 +1,6 @@
 "=============================================
 "Author:hominlinx
-"Version:1
+"Version:1.1
 "Email:hominlinx@gmail.com
 "=============================================
 
@@ -80,7 +80,7 @@ set nocompatible
 set confirm                                                       " prompt when existing from an unsaved file
 set backspace=indent,eol,start                                    " More powerful backspacing
 set report=0                                                      " always report number of lines changed                "
-set nowrap                                                        " donot wrap lines
+set wrap                                                        " do wrap lines
 set scrolloff=5                                                   " 5 lines above/below cursor when scrolling
 set number                                                        " show line numbers
 set showmatch                                                     " 括号配对情况
@@ -182,56 +182,6 @@ map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove
-if exists("+showtabline")
-     function MyTabLine()
-         let s = ''
-         let t = tabpagenr()
-         let i = 1
-         while i <= tabpagenr('$')
-             let buflist = tabpagebuflist(i)
-             let winnr = tabpagewinnr(i)
-             let s .= '%' . i . 'T'
-             let s .= (i == t ? '%1*' : '%2*')
-             let s .= ' '
-             let s .= i . ')'
-             let s .= ' %*'
-             let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
-             let file = bufname(buflist[winnr - 1])
-             let file = fnamemodify(file, ':p:t')
-             if file == ''
-                 let file = '[No Name]'
-             endif
-             let s .= file
-             let i = i + 1
-         endwhile
-         let s .= '%T%#TabLineFill#%='
-         let s .= (tabpagenr('$') > 1 ? '%999XX' : 'X')
-         return s
-     endfunction
-     set stal=2
-     set tabline=%!MyTabLine()
-endif
-
-"相对行号和绝对行号，相对行号可以快速移动
-"行号变成相对，可以用 nj nk 进行跳转 5j 5k 上下跳5行
-"set relativenumber
-"au FocusLost * :set number
-"au FocusGained * :set relativenumber
-
-" 插入模式下用绝对行号, 普通模式下用相对
-"autocmd InsertEnter * :set number
-"autocmd InsertLeave * :set relativenumber
-"function! NumberToggle()
-"  if(&relativenumber == 1)
-"    set number
-"  else
-"    set relativenumber
-"  endif
-"endfunc
-"nnoremap <C-n> :call NumberToggle()<cr>
-"
-" remap U to <C-r> for easier redo
-nnoremap U <C-r>
 
 
 "==========================================
@@ -266,6 +216,26 @@ map <leader>n :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$' ]
 let g:netrw_home='~/bak'
+"close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+
+"for minibufferexpl
+Bundle 'fholgado/minibufexpl.vim'
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+"解决FileExplorer窗口变小问题
+let g:miniBufExplForceSyntaxEnable = 1
+let g:miniBufExplorerMoreThanOne=2
+let g:miniBufExplCycleArround=1
+
+" 默认方向键左右可以切换buffer
+nnoremap <TAB> :MBEbn<CR>
+noremap <leader>bn :MBEbn<CR>
+noremap <leader>bp :MBEbp<CR>
+noremap <leader>bd :MBEbd<CR>
+
 
 "标签导航
 Bundle 'majutsushi/tagbar'
@@ -329,7 +299,6 @@ Bundle 'Lokaltog/vim-easymotion'
 "% 匹配成对的标签，跳转
 Bundle 'vim-scripts/matchit.zip'
 
-
 "##########补全/自动编辑##########"
 
 "迄今位置用到的最好的自动VIM自动补全插件
@@ -356,18 +325,11 @@ let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
 "shift+v+方向键选中(默认当前行)   ->  ,cc  加上注释  -> ,cu 解开注释
 Bundle 'scrooloose/nerdcommenter' 
 
-" 快速加入修改环绕字符
-Bundle 'tpope/vim-surround'
-"for repeat -> enhance surround.vim, . to repeat command
-Bundle 'tpope/vim-repeat'
-
 "自动补全单引号，双引号等
-"Bundle 'Raimondi/delimitMate'
-" for python docstring ",优化输入
-"au FileType python let b:delimitMate_nesting_quotes = ['"']
 Bundle 'jiangmiao/auto-pairs'
 
 "for code alignment
+"代码格式化用：,a= 按等号切分格式化,a: 按逗号切分格式化
 Bundle 'godlygeek/tabular'
 nmap <Leader>a= :Tabularize /=<CR>
 vmap <Leader>a= :Tabularize /=<CR>
@@ -406,11 +368,44 @@ Bundle 'wavded/vim-stylus'
 "##########显示增强##########"
 
 "状态栏增强展示
-Bundle 'Lokaltog/vim-powerline'
+"Bundle 'Lokaltog/vim-powerline'
 "if want to use fancy,need to add font patch -> git clone
 "git://gist.github.com/1630581.git ~/.fonts/ttf-dejavu-powerline
 ""let g:Powerline_symbols = 'fancy'
-let g:Powerline_symbols = 'unicode'
+"let g:Powerline_symbols = unicode'
+
+Bundle 'bling/vim-airline'
+ " --- vim-airline
+set ttimeoutlen=50
+let g:airline_left_sep = ''
+let g:airline_left_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_sep = ''
+let g:airline_linecolumn_prefix = ''
+let g:airline_linecolumn_prefix = ''
+let g:airline_linecolumn_prefix = ''
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#branch#enabled = 1
+let g:airline#extensions#syntastic#enabled = 0
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#csv#enabled = 0 
+let g:airline#extensions#hunks#enabled = 0
+let g:airline#extensions#virtualenv#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+
+function! AirlineThemePatch(palette)
+    if g:airline_theme == "wombat"
+        for colors in values(a:palette.inactive)
+            let colors[3] = 235
+        endfor
+    endif
+endfunction
+
+
 
 "括号显示增强
 Bundle 'kien/rainbow_parentheses.vim'
@@ -467,6 +462,11 @@ let python_highlight_all = 1
 
 " for golang
 Bundle 'jnwhiteh/vim-golang'
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on
 
 " for markdown
 Bundle 'plasticboy/vim-markdown'
@@ -512,9 +512,50 @@ set t_Co=256
  autocmd vimenter * if !argc() | NERDTree | endif
  autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
+"tmux 与vim 的整合
+Bundle 'benmills/vimux'
+" Vimux
+map rp :PromptVimTmuxCommand
+nmap <silent> <leader>rp :VimuxPromptCommand<CR>
+nmap <Leader>vc :VimuxCloseRunner<CR>
+nmap <Leader>vl :VimuxRunLastCommand<CR>
+
+
+Bundle 'benmills/vimux-golang'
+map <Leader>ra :wa<CR> :GolangTestCurrentPackage<CR>
+map <Leader>rf :wa<CR> :GolangTestFocused<CR>
+
 " 针对 Ruby 文件
  autocmd FileType ruby,rdoc set tabstop=2 shiftwidth=2
 "  
 " 针对 Go 文件
   autocmd FileType go setlocal noexpandtab shiftwidth=4 tabstop=4 softtabstop=4 nolist
   autocmd FileType go autocmd BufWritePre <buffer> Fmt"
+"Go tags
+let g:tagbar_type_go = {
+    \ 'ctagstype' : 'go',
+    \ 'kinds'     : [
+        \ 'p:package',
+        \ 'i:imports:1',
+        \ 'c:constants',
+        \ 'v:variables',
+        \ 't:types',
+        \ 'n:interfaces',
+        \ 'w:fields',
+        \ 'e:embedded',
+        \ 'm:methods',
+        \ 'r:constructor',
+        \ 'f:functions'
+    \ ],
+    \ 'sro' : '.',
+    \ 'kind2scope' : {
+        \ 't' : 'ctype',
+        \ 'n' : 'ntype'
+    \ },
+    \ 'scope2kind' : {
+        \ 'ctype' : 't',
+        \ 'ntype' : 'n'
+    \ },
+    \ 'ctagsbin'  : 'gotags',
+    \ 'ctagsargs' : '-sort -silent'
+\ }
