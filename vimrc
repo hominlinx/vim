@@ -308,10 +308,14 @@ let g:ycm_key_list_select_completion=['<c-n>']
 let g:ycm_key_list_select_completion = ['<Down>']
 let g:ycm_key_list_previous_completion=['<c-p>']
 let g:ycm_key_list_previous_completion = ['<Up>']
+let g:ycm_confirm_extra_conf = 0
+let g:syntastic_always_populate_loc_list = 1
 let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
-let g:ycm_min_num_of_chars_for_completion=1
+let g:ycm_min_num_of_chars_for_completion=2
 let g:ycm_autoclose_preview_window_after_insertion=1
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+
 
 "快速插入代码片段
 "Bundle 'vim-scripts/UltiSnips'
@@ -365,6 +369,8 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'groenewege/vim-less'
 Bundle 'wavded/vim-stylus'
 
+"opengl
+Bundle "beyondmarc/opengl.vim"
 "##########显示增强##########"
 
 "状态栏增强展示

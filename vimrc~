@@ -216,6 +216,26 @@ map <leader>n :NERDTreeToggle<CR>
 let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$' ]
 let g:netrw_home='~/bak'
+"close vim if the only window left open is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+
+"for minibufferexpl
+Bundle 'fholgado/minibufexpl.vim'
+let g:miniBufExplMapWindowNavVim = 1
+let g:miniBufExplMapWindowNavArrows = 1
+let g:miniBufExplMapCTabSwitchBufs = 1
+let g:miniBufExplModSelTarget = 1
+"解决FileExplorer窗口变小问题
+let g:miniBufExplForceSyntaxEnable = 1
+let g:miniBufExplorerMoreThanOne=2
+let g:miniBufExplCycleArround=1
+
+" 默认方向键左右可以切换buffer
+nnoremap <TAB> :MBEbn<CR>
+noremap <leader>bn :MBEbn<CR>
+noremap <leader>bp :MBEbp<CR>
+noremap <leader>bd :MBEbd<CR>
+
 
 "标签导航
 Bundle 'majutsushi/tagbar'
