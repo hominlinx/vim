@@ -79,6 +79,9 @@ cd ~/.vim/bundle/YouCompleteMe
 YCM集成了[Syntastic](https://github.com/scrooloose/syntastic),
 当编写C++代码的时候，每次光标悬停2秒钟以上的时候，YCM都会在后台扫描你当前的文件，你刚刚输入的代码有什么编译错误，马上就能显示出来，及时的改掉，不再积累到最后编译的时候。当然这是现代IDE的标配功能，vim中也有插件可以实现，但是有了YCM后，再用vundle安装Syntastic，甚至不用任何配置就实现了这些功能，实在是太方便了。
 
+2013.12.1更新
+1. 将vimrc分解到config里面
+2. 删除了一些插件
 
 
 
