@@ -44,10 +44,6 @@ set incsearch
 " 有一个或以上大写字母时仍大小写敏感
 set smartcase " ignore case if search pattern is all lowercase, case-sensitive otherwise
 
-autocmd! bufwritepost _vimrc source % " vimrc文件修改之后自动加载。 windows。
-autocmd! bufwritepost .vimrc source % " vimrc文件修改之后自动加载。 linux。
-
-" editor settings
 set history=1000
 set nocompatible "关闭vi一致性模式
 set confirm " 在处理未保存或只读文件时，弹出确认
@@ -65,10 +61,5 @@ set matchtime=2 " show matching bracket for 0.2 seconds
 " Python 文件的一般设置，比如不要 tab 等
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
 
-"重新打开回到上次所编辑文件的位置
-" if this not work ,make sure .viminfo is writable for you
-if has("autocmd")
-  au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-endif
 
 set cino=:0g0t0(sus

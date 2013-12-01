@@ -25,10 +25,10 @@ cnoremap <C-P>        <Up>
 
 
 "smart way to move between windows 多窗口移动
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+nnoremap <C-j> <C-W>j
+nnoremap <C-k> <C-W>k
+nnoremap <C-h> <C-W>h
+nnoremap <C-l> <C-W>l
 
 " go to beign and end using capitalized derections
 noremap H 0
@@ -55,9 +55,6 @@ set pastetoggle=<F5>
 " disbale paste mode when leaving insert mode
 au InsertLeave * set nopaste
 
-"F6 激活/取消语法高亮
-"nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
-
 "kj   <Esc>，不用到角落去按esc了
 inoremap kj <Esc>
 
@@ -65,19 +62,9 @@ inoremap kj <Esc>
 nmap t o<ESC>k
 nmap T O<ESC>j
 
-"标签页设置
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>
+"nmap <leader>t :CtrlPBufTag<CR>
+"nmap <leader>r :CtrlPMRUFiles<CR>
+"nmap <leader>f :CtrlP .<CR>
+"nmap <leader>T :CtrlPTag<CR>
+"nmap <leader>e :CtrlPBuffer<CR>
 
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
-
-nmap <leader>t :CtrlPBufTag<CR>
-nmap <leader>r :CtrlPMRUFiles<CR>
-nmap <leader>f :CtrlP .<CR>
-nmap <leader>T :CtrlPTag<CR>
-nmap <leader>e :CtrlPBuffer<CR>

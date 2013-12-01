@@ -43,7 +43,11 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeIgnore=[ '\.pyc$', '\.pyo$', '\.py\$class$', '\.obj$', '\.o$', '\.so$', '\.egg$', '^\.git$' ]
 let g:netrw_home='~/bak'
 "close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | end
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+"for bufexplorer
+Bundle 'vim-scripts/bufexplorer.zip'
+noremap <silent> <CR> :BufExplorer<CR>
 
 "标签导航
 Bundle 'majutsushi/tagbar'
@@ -139,6 +143,31 @@ function! AirlineThemePatch(palette)
     endif
 endfunction
 
+
+"for show no user whitespaces
+Bundle 'bronson/vim-trailing-whitespace'
+map <leader><space> :FixWhitespace<cr>
+
+
+"##########语法检查##########"
+"Bundle 'scrooloose/syntastic'
+let g:syntastic_error_symbol='>>'
+let g:syntastic_warning_symbol='>'
+let g:syntastic_check_on_open=1 "在打开文件的时候检查
+let g:syntastic_enable_highlighting = 0
+let g:syntastic_mode_map      = {'mode': 'active',
+            \'active_filetypes':  [],
+            \'passive_filetypes': ['html', 'css', 'xhtml', 'eruby']
+            \}
+
+
+" Airline output for tmux
+Bundle 'edkolev/tmuxline.vim'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts=0
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_preset = 'full'
+
 "括号显示增强
 Bundle 'kien/rainbow_parentheses.vim'
 let g:rbpt_colorpairs = [
@@ -159,33 +188,8 @@ let g:rbpt_colorpairs = [
     \ ['darkred', 'DarkOrchid3'],
     \ ['red', 'firebrick3'],
     \ ]
-let g:rbpt_max = 16
+let g:rbpt_max = 40
 let g:rbpt_loadcmd_toggle = 0
-
-
-"for show no user whitespaces
-Bundle 'bronson/vim-trailing-whitespace'
-map <leader><space> :FixWhitespace<cr>
-
-
-"##########语法检查##########"
-Bundle 'scrooloose/syntastic'
-let g:syntastic_error_symbol='>>'
-let g:syntastic_warning_symbol='>'
-let g:syntastic_check_on_open=1 "在打开文件的时候检查
-let g:syntastic_enable_highlighting = 0
-let g:syntastic_mode_map      = {'mode': 'active',
-            \'active_filetypes':  [],
-            \'passive_filetypes': ['html', 'css', 'xhtml', 'eruby']
-            \}
-
-
-" Airline output for tmux
-Bundle 'edkolev/tmuxline.vim'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts=0
-let g:tmuxline_powerline_separators = 0
-let g:tmuxline_preset = 'full'
 
 " Brief help
 " :BundleList - list configured bundles
