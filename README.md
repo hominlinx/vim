@@ -26,20 +26,20 @@ It's my config of vim.
 		sudo apt-get remove vim vim-common vim-runtime
 	如果以前用源码安装的，估计这样并不能删除vim，建议将/usr/local/bin/vim
 	的文件夹删除。
-	
+
 	>源码安装vim7.4(vim7.4正式版已经发布)
-		wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2    
+		wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
 	解压，进入，configure配置（目的是支持python，以便后面使用YCM）
-		./configure --with-features=huge --enable-rubyinterp 
+		./configure --with-features=huge --enable-rubyinterp
 		--enable-pythoninterp
-		--with-python-config-dir=/usr/lib/python2.7/config 
+		--with-python-config-dir=/usr/lib/python2.7/config
 		--enable-perlinterp --enable-cscope --prefix=/usr
 	注意：--with-python-config-dir 是根据系统python的配置文件路径而定
 		make
 		sudo make install
 
 2. 配置过程中，使用vundle进行插件控制，但有些插件还需要手动编译，
-例如YCM 编译最为麻烦。YCM 需要指定ycm_extra_conf.py 
+例如YCM 编译最为麻烦。YCM 需要指定ycm_extra_conf.py
 
 ###vim杀手锏之vundle
 
@@ -83,6 +83,10 @@ YCM集成了[Syntastic](https://github.com/scrooloose/syntastic),
 1. 将vimrc分解到config里面
 2. 删除了一些插件
 
+2013.12.20更新
+加入了macos的分支，用于在mac下的vim使用。mac下使用macvim（mvim）。
+建议不要长时间使用tmux。防止出现不刷屏现象。xcode下使用xvimrc。
+执行'ln -s ~/.vim/xvimrc ~/.xvimrc'
 
 
 

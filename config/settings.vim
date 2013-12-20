@@ -16,12 +16,6 @@ set helplang=cn
 " 文件类型检测/允许加载文件类型插件/为不同类型的文件定义不同的缩进格式
 filetype plugin indent on
 
-
-" color scheme
-set background=dark
-set guifont=Monaco\ h9
-
-
 " 取消备份。
 set nobackup
 set noswapfile
@@ -62,4 +56,21 @@ set matchtime=2 " show matching bracket for 0.2 seconds
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
 
 
+"for C/C++
+set smartindent
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
+
 set cino=:0g0t0(sus
+
+"取消默认快捷键
+let macvim_skip_cmd_opt_movement = 1
+let macvim_hig_shift_movement = 1
+let macvim_skip_colorscheme = 1
+
+set transparency=2
+set guioptions-=T
+set guitablabel=%t
+
