@@ -99,10 +99,13 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 ".vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
 "let g:UltiSnipsSnippetDirectories=["snippets", "bundle/ultiSnips/UltiSnips"]
 
+"cpp-->h 
+Bundle 'a.vim'
+
 
 
 "快速 加减注释
-"shift+v+方向键选中(默认当前行) -> ,cc 加上注释 -> ,cu 解开注释
+"shift+v+方向键选中(默认当前行) -> ,cs 加上注释 -> ,cu 解开注释
 Bundle 'scrooloose/nerdcommenter'
 
 "状态栏增强展示
