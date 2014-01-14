@@ -45,10 +45,6 @@ let g:netrw_home='~/bak'
 "close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
-"for bufexplorer
-Bundle 'vim-scripts/bufexplorer.zip'
-noremap <silent> <CR> :BufExplorer<CR>
-
 "标签导航
 Bundle 'majutsushi/tagbar'
 nmap <F9> :TagbarToggle<CR>
@@ -89,6 +85,9 @@ let g:syntastic_always_populate_loc_list = 1
 let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
 let g:ycm_min_num_of_chars_for_completion=2
 let g:ycm_autoclose_preview_window_after_insertion=1
+let g:ycm_complete_in_comments=1
+let g:ycm_complete_in_strings=1
+let g:ycm_collect_identifiers_from_comments_and_strings=0
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
@@ -98,7 +97,7 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 "定义存放代码片段的文件夹
 ".vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
-let g:UltiSnipsSnippetDirectories=["snippets", "bundle/UltiSnips/UltiSnips"]
+let g:UltiSnipsSnippetDirectories=["snippets", "bundle/ultiSnips/UltiSnips"]
 
 
 

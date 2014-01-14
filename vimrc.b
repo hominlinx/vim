@@ -483,7 +483,7 @@ Bundle 'octol/vim-cpp-enhanced-highlight'
 
 
 "设置花括号补全
-set smartindent
+set smartindent 
 set autoindent
 set tabstop=4
 set shiftwidth=4
