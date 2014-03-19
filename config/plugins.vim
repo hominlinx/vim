@@ -105,6 +105,9 @@ Bundle 'a.vim'
 "ack 用于查询字符串
 Bundle 'mileszs/ack.vim'
 
+"add vim gitgutter
+Bundle 'airblade/vim-gitgutter'
+
 "快速 加减注释
 "shift+v+方向键选中(默认当前行) -> ,cs 加上注释 -> ,cu 解开注释
 Bundle 'scrooloose/nerdcommenter'
