@@ -17,7 +17,25 @@ It's my config of vim.
 
 -------------------
 
-### 配置步骤
+###安装步骤
+1. clone到本地，配置到linux个人目录（若从linuxOfConfig过来的，不需要clone）
+> `git clone https://github.com/hominlinx/vim.git`
+
+2. 安装依赖包
+
+```
+#debian
+sudo apt-get install ctags
+sudo apt-get install build-essential cmake python-dev
+
+```
+
+3. 一键安装
+
+>  `sh -x install.sh`
+
+
+### 手动安装(如果一键安装失败，需要手动安装)
 
 1. 首先删除原来的vim，安装最新的vim7.4:
 
@@ -26,6 +44,9 @@ It's my config of vim.
 		sudo apt-get remove vim vim-common vim-runtime
 	如果以前用源码安装的，估计这样并不能删除vim，建议将/usr/local/bin/vim
 	的文件夹删除。
+
+    >源码安装vim7.4
+        `sh -x installvim7_4.sh`
 	
 	>源码安装vim7.4(vim7.4正式版已经发布)
 		wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2    
