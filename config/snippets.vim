@@ -30,8 +30,8 @@ au Syntax * RainbowParenthesesLoadSquare
 au Syntax * RainbowParenthesesLoadBraces
 
 set hidden "in order to switch between buffers with unsaved change 
-map <s-tab> :bp<cr>
-map <tab> :bn<cr>
+map <c-n> :bp<cr>
+map <c-p> :bn<cr>
 map ,bd :bd<cr>"
 
 

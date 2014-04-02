@@ -61,5 +61,10 @@ set matchtime=2 " show matching bracket for 0.2 seconds
 " Python 文件的一般设置，比如不要 tab 等
 autocmd FileType python set tabstop=4 shiftwidth=4 expandtab ai
 
+set smartindent 
+set autoindent
+set tabstop=4
+set shiftwidth=4
+set expandtab
 
 set cino=:0g0t0(sus
