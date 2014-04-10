@@ -85,19 +85,32 @@ let g:syntastic_always_populate_loc_list = 1
 let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
 let g:ycm_min_num_of_chars_for_completion=2
 let g:ycm_autoclose_preview_window_after_insertion=1
+"关闭语法检测
+let g:ycm_enable_diagnostic_signs=0
+"在注释输入时也能补全
 let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
-let g:ycm_collect_identifiers_from_comments_and_strings=0
+let g:ycm_collect_identifiers_from_comments_and_strings=1 "注释和字符串的文字也会收入补全
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
+Bundle 'scrooloose/syntastic'
+let g:syntastic_check_on_open = 1
+let g:syntastic_error_symbol = '✗'
+let g:syntastic_warning_symbol = '⚠'
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_loc_list_height = 5
+let g:syntastic_enable_highlighting = 1
+let g:syntastic_mode_map = { 'passive_filetypes': ['scss', 'slim'] }
+
 "快速插入代码片段
 Bundle 'SirVer/ultisnips'
+Bundle 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 "定义存放代码片段的文件夹
 ".vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
-"let g:UltiSnipsSnippetDirectories=["snippets", "bundle/ultiSnips/UltiSnips"]
+"let g:UltiSnipsSnippetDirectories=["snippets", "bundle/ultiSnips"]
 
 "cpp-->h 
 Bundle 'a.vim'
