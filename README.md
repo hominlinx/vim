@@ -104,6 +104,9 @@ YCM集成了[Syntastic](https://github.com/scrooloose/syntastic),
 1. 将vimrc分解到config里面
 2. 删除了一些插件
 
+2014.4.11更新
+1. ack.vim-->ag.vim， 注意要安装[ag](https://github.com/ggreer/the_silver_searcher)
+
 
 
 

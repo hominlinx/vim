@@ -115,8 +115,8 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 "cpp-->h 
 Bundle 'a.vim'
 
-"ack 用于查询字符串
-Bundle 'mileszs/ack.vim'
+"ag 用于查询字符串
+Bundle 'rking/ag.vim'
 
 "add vim gitgutter
 Bundle 'airblade/vim-gitgutter'
