@@ -31,7 +31,7 @@ let g:rehash256 = 1
 
 "主题 solarized
 Bundle 'altercation/vim-colors-solarized'
-"let g:solarized_termcolors=256
+let g:solarized_termcolors=256
 let g:solarized_termtrans=1
 let g:solarized_contrast="normal"
 let g:solarized_visibility="normal"
@@ -94,7 +94,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings=1 "注释和字符串的
 nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 let g:syntastic_check_on_open = 1
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
@@ -209,6 +209,9 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 40
 let g:rbpt_loadcmd_toggle = 0
+
+"cmake.vim
+Bundle 'vhdirk/vim-cmake'
 
 " Brief help
 " :BundleList - list configured bundles

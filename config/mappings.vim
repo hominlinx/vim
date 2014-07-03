@@ -36,8 +36,8 @@ noremap L $
 map 0 ^
 
 " speed up scrolling of the viewport slightly
-nnoremap <C-e> 2<C-e>
-nnoremap <C-y> 2<C-y>
+nnoremap <C-e> 4<C-e>
+nnoremap <C-y> 4<C-y>
 
 "为了方便复制，用《F2》开启或关闭行号显示：
 nnoremap <F2> :set nonumber! number?<CR>
