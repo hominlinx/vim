@@ -24,7 +24,7 @@ if [ ! -d "$vimfile" ]; then
     tar jxvf $vimtar
     cd $vimfile
 
-    ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7/config --enable-perlinterp --enable-cscope --prefix=/usr
+    ./configure --with-features=huge --enable-rubyinterp --enable-pythoninterp --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu --enable-perlinterp --enable-cscope --prefix=/usr
     make
     sudo make install
 fi
