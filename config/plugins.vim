@@ -54,6 +54,7 @@ let g:tagbar_autofocus = 1
 Bundle 'jiangmiao/auto-pairs'
 
 "文件搜索 建议学习一下
+"http://blog.codepiano.com/pages/ctrlp-cn.light.html#loaded_ctrlp
 Bundle 'kien/ctrlp.vim'
 let g:ctrlp_map = '<leader>p'
 let g:ctrlp_cmd = 'CtrlP'
@@ -66,8 +67,10 @@ let g:ctrlp_working_path_mode=0
 let g:ctrlp_match_window_bottom=1
 let g:ctrlp_max_height=15
 let g:ctrlp_match_window_reversed=0
-let g:ctrlp_mruf_max=500
+let g:ctrlp_mruf_max=500 "指定你希望CtrlP记录的最近打开的文件历史的数目
 let g:ctrlp_follow_symlinks=1
+let g:ctrlp_max_files=100000
+let g:ctrlp_max_depth = 100
 
 
 "% 匹配成对的标签，跳转
@@ -118,9 +121,29 @@ Bundle 'a.vim'
 "ag 用于查询字符串
 Bundle 'rking/ag.vim'
 
+Bundle 'dyng/ctrlsf.vim'
+nmap <C-F>f <Plug>CtrlSFPrompt
+vmap <C-F>f <Plug>CtrlSFVwordPath
+nmap <C-F>n <Plug>CtrlSFCwordPath
+nmap <C-F>p <Plug>CtrlSFPwordPath
+nnoremap <C-F>o :CtrlSFOpen<CR>
+nnoremap <C-F>c :CtrlSFClose<CR>
+let g:ctrlsf_ignore = ['node_modules', 'bower_components']
 "add vim gitgutter
 Bundle 'airblade/vim-gitgutter'
 
+"平滑滚动
+Bundle 'yonchu/accelerated-smooth-scroll'
+
+Plugin 'rhysd/accelerated-jk'
+" cursor movement
+ if isdirectory($HOME . "/.vim/bundle/accelerated-jk") " a variable
+" not assigned
+ nmap j <Plug>(accelerated_jk_gj)
+ nmap k <Plug>(accelerated_jk_gk)
+ endif
+ let g:accelerated_jk_acceleration_limit = 500
+ let g:accelerated_jk_acceleration_table = [10, 20, 30, 35, 40, 45, 50]"
 "快速 加减注释
 "shift+v+方向键选中(默认当前行) -> ,cs 加上注释 -> ,cu 解开注释
 Bundle 'scrooloose/nerdcommenter'
