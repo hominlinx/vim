@@ -236,6 +236,22 @@ let g:rbpt_loadcmd_toggle = 0
 "cmake.vim
 Bundle 'vhdirk/vim-cmake'
 
+"scons vim
+Bundle 'scons.vim'
+
+"gdb
+"Bundle 'yuratomo/dbg.vim'
+"let g:dbg#command_shell = 'bash'
+"let g:dbg#shell_prompt = '> '
+"let g:dbg#command_jdb = 'jdb'
+"let g:dbg#command_gdb = 'gdb'
+Bundle 'multvals.vim'
+Bundle 'gdbvim'
+let g:vimgdb_debug_file = ""
+run macros/gdb_mappings.vim
+
+"Bundle "Shougo/vimshell.vim"
+Bundle 'Shougo/vimproc'
 " Brief help
 " :BundleList - list configured bundles
 " :BundleInstall(!) - install(update) bundles
