@@ -31,8 +31,8 @@ set cursorcolumn
 set cursorline " 突出显示当前行
 
 "- 则点击光标不会换,用于复制
-set mouse =a
-"set mouse -=a "鼠标暂不启动
+"set mouse =a
+set mouse -=a "鼠标暂不启动
 
 "设置文内智能搜索提示
 " 高亮search命中的文本。

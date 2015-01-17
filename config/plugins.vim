@@ -245,13 +245,19 @@ Bundle 'scons.vim'
 "let g:dbg#shell_prompt = '> '
 "let g:dbg#command_jdb = 'jdb'
 "let g:dbg#command_gdb = 'gdb'
-Bundle 'multvals.vim'
-Bundle 'gdbvim'
-let g:vimgdb_debug_file = ""
-run macros/gdb_mappings.vim
+"Bundle 'multvals.vim'
+"Bundle 'gdbvim'
+"let g:vimgdb_debug_file = ""
+"run macros/gdb_mappings.vim
 
-"Bundle "Shougo/vimshell.vim"
-Bundle 'Shougo/vimproc'
+Bundle 'Conque-GDB'
+let g:ConqueGdb_Leader = ',g'
+let g:ConqueGdb_SrcSplit = 'right'
+"let g:ConqueGdb_GdbExe = 'gdb' "or arm-linux-gdb
+let g:ConqueGdb_GdbExe = 'arm-none-eabi-gdb' "or gdb
+"Bundle 'minimal_gdb'
+"Bundle 'gdbmgr'
+"Bundle 'Shougo/vimproc'
 " Brief help
 " :BundleList - list configured bundles
 " :BundleInstall(!) - install(update) bundles
