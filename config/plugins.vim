@@ -253,8 +253,8 @@ Bundle 'scons.vim'
 Bundle 'Conque-GDB'
 let g:ConqueGdb_Leader = ',g'
 let g:ConqueGdb_SrcSplit = 'right'
-"let g:ConqueGdb_GdbExe = 'gdb' "or arm-linux-gdb
-let g:ConqueGdb_GdbExe = 'arm-none-eabi-gdb' "or gdb
+let g:ConqueGdb_GdbExe = 'gdb' "or arm-linux-gdb
+"let g:ConqueGdb_GdbExe = 'arm-none-eabi-gdb' "or gdb
 "Bundle 'minimal_gdb'
 "Bundle 'gdbmgr'
 "Bundle 'Shougo/vimproc'
@@ -266,6 +266,8 @@ let g:ConqueGdb_GdbExe = 'arm-none-eabi-gdb' "or gdb
 "
 " see :h vundle for more details or wiki for FAQ
 " NOTE: comments after Bundle command are not allowed..
+
+Bundle 'DrawIt'
 
 if iCanHazVundle == 0
   echo "Installing Bundles, please ignore key map error messages"
