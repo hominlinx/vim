@@ -115,7 +115,7 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 ".vim/snippets下，使用自定义和默认的，将会的到全局，有冲突的会提示
 "let g:UltiSnipsSnippetDirectories=["snippets", "bundle/ultiSnips"]
 
-"cpp-->h 
+"cpp-->h
 Bundle 'a.vim'
 
 "ag 用于查询字符串
@@ -268,6 +268,10 @@ let g:ConqueGdb_GdbExe = 'gdb' "or arm-linux-gdb
 " NOTE: comments after Bundle command are not allowed..
 
 Bundle 'DrawIt'
+
+"markdown
+"
+"Bundle 'scturtle/vim-instant-markdown-py'
 
 if iCanHazVundle == 0
   echo "Installing Bundles, please ignore key map error messages"

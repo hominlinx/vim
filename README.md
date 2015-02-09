@@ -107,6 +107,10 @@ YCM集成了[Syntastic](https://github.com/scrooloose/syntastic),
 2014.4.11更新
 1. ack.vim-->ag.vim， 注意要安装[ag](https://github.com/ggreer/the_silver_searcher)
 
+2015.2.9更新
+1. 加入`scturtle/vim-instant-markdown-py`
+
+
 
 
 
