@@ -92,10 +92,18 @@ https://github.com/gmarik/vundle)
 
 使用vundle安装YCM后，需要先编译才能使用。
 ```bash
+sudo apt-get install clang-3.3
 cd ~/.vim/bundle/YouCompleteMe
 ./install.sh --clang-completer
 ```
 语意补全要正确工作，需要配置好.ycm_extra_conf.py文件。
+可以使用`YcmDebugInfo ` 查看具体加载了哪个配置文件。加载顺序：
+```
+1. 本目录下
+2. 本工程下（git管理）
+3. 根目录（home）
+4. global
+```
 
 YCM集成了[Syntastic](https://github.com/scrooloose/syntastic),
 当编写C++代码的时候，每次光标悬停2秒钟以上的时候，YCM都会在后台扫描你当前的文件，你刚刚输入的代码有什么编译错误，马上就能显示出来，及时的改掉，不再积累到最后编译的时候。当然这是现代IDE的标配功能，vim中也有插件可以实现，但是有了YCM后，再用vundle安装Syntastic，甚至不用任何配置就实现了这些功能，实在是太方便了。
