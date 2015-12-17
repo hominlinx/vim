@@ -85,17 +85,17 @@ let g:ycm_key_list_previous_completion=['<c-p>']
 let g:ycm_key_list_previous_completion = ['<Up>']
 let g:ycm_confirm_extra_conf = 0
 let g:syntastic_always_populate_loc_list = 1
-let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/cpp/ycm/.ycm_extra_conf.py"
+let g:ycm_global_ycm_extra_conf="~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py"
 let g:ycm_min_num_of_chars_for_completion=2
 let g:ycm_autoclose_preview_window_after_insertion=1
 "关闭语法检测
 let g:ycm_enable_diagnostic_signs=0
 "在注释输入时也能补全
-let g:ycm_complete_in_comments=1
-let g:ycm_complete_in_strings=1
-let g:ycm_collect_identifiers_from_comments_and_strings=1 "注释和字符串的文字也会收入补全
-nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
-nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
+"let g:ycm_complete_in_comments=1
+"let g:ycm_complete_in_strings=1
+"let g:ycm_collect_identifiers_from_comments_and_strings=1 "注释和字符串的文字也会收入补全
+"nnoremap <leader>jd :YcmCompleter GoToDefinitionElseDeclaration<CR>
+"nnoremap <F5> :YcmForceCompileAndDiagnostics<CR>
 
 "Bundle 'scrooloose/syntastic'
 let g:syntastic_check_on_open = 1
