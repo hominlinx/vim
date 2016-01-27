@@ -283,6 +283,7 @@ Bundle 'othree/xml.vim'
 "QT支持
 Bundle 'Townk/vim-qt'
 Bundle  'xaizek/vim-qthelp'
+Bundle 'peterhoeg/vim-qml'
 
 
 if iCanHazVundle == 0
