@@ -285,6 +285,9 @@ Bundle 'Townk/vim-qt'
 Bundle  'xaizek/vim-qthelp'
 Bundle 'peterhoeg/vim-qml'
 
+"bitbake 的支持
+Bundle 'kergoth/vim-bitbake'
+
 
 if iCanHazVundle == 0
   echo "Installing Bundles, please ignore key map error messages"
